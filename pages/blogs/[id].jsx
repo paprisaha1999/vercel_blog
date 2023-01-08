@@ -30,15 +30,15 @@ const Blog = ({ blog }) => {
   );
 };
 
-export async function getStaticPaths() {
-  // used along getStaticProps, when we want to generate multiple html pages for dynamic routing
-  let r = await fetch(`http://localhost:8080/blogs`);
-  let blogs = await r.json();
-  return {
-    paths: blogs.map((blog) => ({ params: { id: String(blog.id) } })), // for each parameters it will create a new html page
-    fallback: false,
-  };
-}
+// export async function getStaticPaths() {
+//   // used along getStaticProps, when we want to generate multiple html pages for dynamic routing
+//   let r = await fetch(`http://localhost:8080/blogs`);
+//   let blogs = await r.json();
+//   return {
+//     paths: blogs.map((blog) => ({ params: { id: String(blog.id) } })), // for each parameters it will create a new html page
+//     fallback: false,
+//   };
+// }
 
 // export async function getServerSideProps(context) { // this function will execute on server not on clint // context is used to share id from line 9 // context variable provides us the current info of url
 //   let id = context.params.id; //this is from backend
@@ -53,18 +53,18 @@ export async function getStaticPaths() {
 //   };
 // }
 
-export async function getStaticProps(context) {
-  // this function will execute on server not on clint // context is used to share id from line 9 // context variable provides us the current info of url
-  let id = context.params.id; //this is from backend
-  //   console.log(id);  // even it shows the answer in vs code console, not in browser console // with this backend can read the url
+// export async function getStaticProps(context) {
+//   // this function will execute on server not on clint // context is used to share id from line 9 // context variable provides us the current info of url
+//   let id = context.params.id; //this is from backend
+//   //   console.log(id);  // even it shows the answer in vs code console, not in browser console // with this backend can read the url
 
-  let r = await fetch(`http://localhost:8080/blogs/${id}`);
-  let d = await r.json();
-  return {
-    props: {
-      blog: d, // passing as an props
-    },
-  };
-}
+//   let r = await fetch(`http://localhost:8080/blogs/${id}`);
+//   let d = await r.json();
+//   return {
+//     props: {
+//       blog: d, // passing as an props
+//     },
+//   };
+// }
 
 export default Blog;

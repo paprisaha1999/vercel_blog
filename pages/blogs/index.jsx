@@ -45,14 +45,14 @@ const Blogs = ({ blogs }) => {
 
 // SSG
 // when we sure, that our data will never going to change , for that we use getStaticProps, instead of getServerSideProps
-export async function getStaticProps() {
-  let r = await fetch("http://localhost:8080/blogs");
-  let d = await r.json();
-  return {
-    props: {
-      blogs: d, // we return blogs a as props
-    },
-  };
-}
+// export async function getStaticProps() {
+//   let r = await fetch("http://localhost:8080/blogs");
+//   let d = await r.json();
+//   return {
+//     props: {
+//       blogs: d, // we return blogs a as props
+//     },
+//   };
+// }
 
 export default Blogs;
